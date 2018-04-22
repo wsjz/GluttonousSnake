@@ -12,10 +12,10 @@ public class Snake {
     private LinkedList<Node> body = new LinkedList<>();
 
     public Node eat(Node food) {
-
         // 如果food与头部相邻，则将food这个Node加入到body中，返回food
         if(isNeighbor(this.body.getFirst(), food)) {
             // 相邻情况下的处理
+            body.addFirst(food);
             return food;
         }
         // 否则不做任何操作，返回null
@@ -23,9 +23,25 @@ public class Snake {
     }
 
     public Node move(Direction direction) {
+       Node tail = this.body.getLast();
         // 根据方向更新贪吃蛇的body
+        switch (direction) {
+            case UP:
+
+                break;
+            case DOWN:
+
+                break;
+            case LEFT:
+
+                break;
+            case RIGHT:
+
+                break;
+        }
+
         // 返回移动之前的尾部Node
-        return null;
+        return tail;
     }
 
     public Node getHead() {
@@ -41,6 +57,9 @@ public class Snake {
         return body;
     }
 
+    public void setBody(LinkedList<Node> body) {
+        this.body = body;
+    }
 
     private boolean isNeighbor(Node a, Node b) {
         //横坐标相减为1或纵坐标相减为1

@@ -8,4 +8,7 @@ package config;
 public class Settings {
     //0.2s
     public static final int DEFAULT_MOVE_INTERVAL = 200;
+    public static final int DEFAULT_GRID_WIDTH = 2;
+    public static final int DEFAULT_NODE_SIZE = 2;
+    public static final int DEFAULT_GRID_HEIGHT = 2;
 }

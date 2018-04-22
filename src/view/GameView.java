@@ -1,5 +1,5 @@
 package view;
-
+import config.Settings;
 import entity.Grid;
 import entity.Node;
 import entity.Snake;
@@ -56,14 +56,14 @@ public class GameView {
 
     private void drawSquare(Graphics graphics, Node squareArea, Color color) {
         graphics.setColor(color);
-//        int size = Settings.DEFAULT_NODE_SIZE;
-//        graphics.fillRect(squareArea.getX() * size, squareArea.getY() * size,size,size);
+        int size = Settings.DEFAULT_NODE_SIZE;
+        graphics.fillRect(squareArea.getX() * size, squareArea.getY() * size,size,size);
     }
 
     private void drawCycle(Graphics graphics, Node squareArea, Color color) {
         graphics.setColor(color);
-//        int size = Settings.DEFAULT_NODE_SIZE;
-//        graphics.fillOval(squareArea.getX() * size, squareArea.getY() * size,size,size);
+        int size = Settings.DEFAULT_NODE_SIZE;
+        graphics.fillOval(squareArea.getX() * size, squareArea.getY() * size,size,size);
     }
 
     public void showGameOverMessage() {

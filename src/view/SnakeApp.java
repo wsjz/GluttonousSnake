@@ -1,5 +1,6 @@
 package view;
 
+import config.Settings;
 import controller.GameController;
 import entity.Grid;
 
@@ -27,6 +28,7 @@ public class SnakeApp implements Runnable{
 
     public void run() {
         //初始化grid
+        grid = new Grid(400,400);
 
         JFrame window = new JFrame("贪吃蛇");
         //画出棋盘和贪吃蛇
@@ -34,9 +36,10 @@ public class SnakeApp implements Runnable{
         Container contentPane = window.getContentPane();
 
         gameView = new GameView(grid);
+
         gameView.init();
 
-//        gameView.getCanvas().setPreferredSize(new Dimension(Settings.DEFAULT_GRID_WIDTH, Settings.DEFAULT_GRID_HEIGHT));
+        gameView.getCanvas().setPreferredSize(new Dimension(Settings.DEFAULT_GRID_WIDTH, Settings.DEFAULT_GRID_HEIGHT));
 
         contentPane.add(gameView.getCanvas(),BorderLayout.CENTER);
         window.pack();
