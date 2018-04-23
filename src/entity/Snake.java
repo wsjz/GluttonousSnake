@@ -23,23 +23,31 @@ public class Snake {
     }
 
     public Node move(Direction direction) {
-       Node tail = this.body.getLast();
+        Node tail = this.body.getLast();
+        Node nextStep;
         // 根据方向更新贪吃蛇的body
         switch (direction) {
             case UP:
-
+                nextStep = new Node(getHead().getX(),getHead().getY() - 1);
+                this.body.addFirst(nextStep);
+                this.body.removeLast();
                 break;
             case DOWN:
-
+                nextStep = new Node(getHead().getX(),getHead().getY() + 1);
+                this.body.addFirst(nextStep);
+                this.body.removeLast();
                 break;
             case LEFT:
-
+                nextStep = new Node(getHead().getX() - 1,getHead().getY());
+                this.body.addFirst(nextStep);
+                this.body.removeLast();
                 break;
             case RIGHT:
-
+                nextStep = new Node(getHead().getX() + 1,getHead().getY());
+                this.body.addFirst(nextStep);
+                this.body.removeLast();
                 break;
         }
-
         // 返回移动之前的尾部Node
         return tail;
     }
