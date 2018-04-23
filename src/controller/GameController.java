@@ -45,7 +45,7 @@ public class GameController implements Runnable, KeyListener {
         }
 
         //repaint the canvas
-
+        gameView.draw();
     }
 
     @Override
@@ -67,12 +67,14 @@ public class GameController implements Runnable, KeyListener {
                 break;
             }
             // 进入游戏下一步
-
+            boolean isContinue = this.grid.nextRound();
             // 如果结束，则退出游戏
-
-            gameView.showGameOverMessage();
-            // 如果继续，则绘制新的游戏页面
-
+            if(!isContinue) {
+                gameView.showGameOverMessage();
+            } else {
+                // 如果继续，则绘制新的游戏页面
+                this.gameView.draw();
+            }
         }
         running = false;
     }
