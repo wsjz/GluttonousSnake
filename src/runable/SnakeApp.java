@@ -1,8 +1,9 @@
-package view;
+package runable;
 
 import config.Settings;
 import controller.GameController;
 import entity.Grid;
+import view.GameView;
 
 import javax.swing.*;
 import java.awt.*;
