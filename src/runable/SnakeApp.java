@@ -29,7 +29,7 @@ public class SnakeApp implements Runnable{
 
     public void run() {
         //初始化grid
-        grid = new Grid(400,400);
+        grid = new Grid(Settings.DEFAULT_GRID_WIDTH,Settings.DEFAULT_GRID_HEIGHT);
 
         JFrame window = new JFrame("贪吃蛇");
         //画出棋盘和贪吃蛇
@@ -39,7 +39,7 @@ public class SnakeApp implements Runnable{
         gameView = new GameView(grid);
 
         gameView.init();
-
+        //按棋盘配置设置画布大小
         gameView.getCanvas().setPreferredSize(new Dimension(Settings.DEFAULT_GRID_WIDTH, Settings.DEFAULT_GRID_HEIGHT));
 
         contentPane.add(gameView.getCanvas(),BorderLayout.CENTER);
