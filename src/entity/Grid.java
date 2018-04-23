@@ -55,6 +55,7 @@ public class Grid {
 		// 使用Random设置x和y
 		Random random = new Random();
 		//食物的位置不能和贪吃蛇的位置重叠
+		//TODO:可优化
 		do {
 			x = random.nextInt(this.width);
 			y = random.nextInt(this.height);
@@ -72,23 +73,38 @@ public class Grid {
 
 	/**由Grid类来驱动Snake的move操作
 	 *每一次移动可以认为是游戏的下一步
+     *
+     * 头部不能是边界
+     * 头部不能碰到自身，否则游戏结束
 	 **/
 	public boolean nextRound() {
 
-//		按当前方向移动贪吃蛇
-//
-//		if (头部的位置是否有效) {
-//			if (头部原来是食物) {
-//				把原来move操作时删除的尾部添加回来
-//				创建一个新的食物
-//			}
-//			更新棋盘状态并返回游戏是否结束的标志
-//		}
+        //按当前方向移动贪吃蛇
+        Node tail = this.snake.move(this.snakeDirection);
+        int x = snake.getHead().getX();
+        int y = snake.getHead().getY();
+		if (x >= 0 && x < width && y >= 0 && y < height
+                || !snake.getBody().contains(snake.getHead())) {//当前头部的位置是否有效
+            if (snake.getHead().equals(food)) { //头部原来是食物，那移动后就不删除尾部
+				//把原来move操作时删除的尾部添加回来
+                snake.addTail(tail);
+				//创建一个新的食物
+                createFood();
+                status[x][y] = true;//头部覆盖了棋盘
+                return true;
+            }
+			//更新棋盘状态并返回游戏是否结束的标志
+            status[x][y] = true;
+            status[tail.getX()][tail.getY()] = false;
+            //游戏继续
+            return true;
+        }
+        //头部覆盖到了边界或自身，游戏结束
 		return false;
 	}
 
 	/**
-	 * 用户修改贪吃蛇行进方向的方法
+	 * 外部（如GameController）修改贪吃蛇行进方向的方法
 	 * */
 	public void changeDirection(Direction newDirection) {
 		if (snakeDirection.compatibleWith(newDirection)) {
