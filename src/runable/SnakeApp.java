@@ -49,8 +49,8 @@ public class SnakeApp implements Runnable{
         window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         window.setVisible(true);
 
-        gameController = new GameController(grid, gameView);
-        window.addKeyListener((KeyListener) gameController);
+        gameController = new GameController(grid, gameView,true);
+        window.addKeyListener(gameController);
         new Thread(gameController).start();
 
     }
