@@ -45,7 +45,7 @@ public class SnakeApp implements Runnable{
         contentPane.add(gameView.getCanvas(),BorderLayout.CENTER);
         window.pack();
         // 设置窗口为大小不可变化
-        window.setResizable(false);
+//        window.setResizable(false);
         window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         window.setVisible(true);
 

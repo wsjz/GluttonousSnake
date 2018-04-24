@@ -43,7 +43,6 @@ public class GameController implements Runnable, KeyListener {
         if (keyCode == KeyEvent.VK_RIGHT) {
             grid.changeDirection(Direction.RIGHT);
         }
-
         //repaint the canvas
         gameView.draw();
     }
@@ -64,7 +63,7 @@ public class GameController implements Runnable, KeyListener {
             try {
                 Thread.sleep(Settings.DEFAULT_MOVE_INTERVAL);
             } catch (InterruptedException e) {
-                continue;
+                break;
             }
             // 进入游戏下一步
             boolean isContinue = this.grid.nextRound();

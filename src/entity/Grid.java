@@ -84,13 +84,14 @@ public class Grid {
         int x = snake.getHead().getX();
         int y = snake.getHead().getY();
 		if (x >= 0 && x < width && y >= 0 && y < height
-                || !snake.getBody().contains(snake.getHead())) {//当前头部的位置是否有效
-            if (snake.getHead().equals(food)) { //头部原来是食物，那移动后就不删除尾部
-				//把原来move操作时删除的尾部添加回来
+				&& !status[x][y]) {//当前头部的位置是否有效
+			Node foodAte = snake.eat(food);
+			if (snake.getHead().equals(foodAte)) { //头部原来是食物，那移动后就不删除尾部
+				//把原来move操作时删除的尾部添加回来再加长
                 snake.addTail(tail);
 				//创建一个新的食物
                 createFood();
-                status[x][y] = true;//头部覆盖了棋盘
+                status[foodAte.getX()][foodAte.getY()] = true;//头部覆盖了棋盘
                 return true;
             }
 			//更新棋盘状态并返回游戏是否结束的标志

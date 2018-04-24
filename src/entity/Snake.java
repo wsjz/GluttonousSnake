@@ -11,16 +11,16 @@ public class Snake {
 
     private LinkedList<Node> body = new LinkedList<>();
 
-//    public Node eat(Node food) {
-//        // 如果food与头部相邻，则将food这个Node加入到body中，返回food
-//        if(isNeighbor(this.body.getFirst(), food)) {
-//            // 相邻情况下的处理
-//            body.addFirst(food);
-//            return food;
-//        }
-//        // 否则不做任何操作，返回null
-//        return null;
-//    }
+    public Node eat(Node food) {
+        // 如果food与头部相邻，则将food这个Node加入到body中，返回food
+        if(isNeighbor(this.body.getFirst(), food)) {
+            // 相邻情况下的处理
+            body.addFirst(food);
+            return food;
+        }
+        // 否则不做任何操作，返回null
+        return null;
+    }
 
     public Node move(Direction direction) {
         Node tail = this.body.getLast();
@@ -69,9 +69,9 @@ public class Snake {
         this.body = body;
     }
 
-//    private boolean isNeighbor(Node a, Node b) {
-//        //横坐标相减为1或纵坐标相减为1
-//        return (Math.abs(a.getX() - b.getX()) + Math.abs(a.getY() - b.getY()) == 1);
-//    }
+    public boolean isNeighbor(Node a, Node b) {
+        //横坐标相减为1或纵坐标相减为1
+        return (Math.abs(a.getX() - b.getX()) + Math.abs(a.getY() - b.getY()) == 1);
+    }
 
 }

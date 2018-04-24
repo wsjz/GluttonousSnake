@@ -42,7 +42,7 @@ public class GameView {
     }
 
     private void drawSnake(Graphics graphics, Snake snake) {
-     for(int i = 0; i < snake.getBody().toArray().length - 1; i++){
+     for(int i = 0; i < snake.getBody().size(); i++){
          drawSquare(graphics, snake.getBody().get(i), new Color(255, 255, 255));
      }
     }
@@ -69,7 +69,8 @@ public class GameView {
     private void drawCycle(Graphics graphics, Node squareArea, Color color) {
         graphics.setColor(color);
         int size = Settings.DEFAULT_NODE_SIZE;
-        graphics.fillOval(squareArea.getX(), squareArea.getY(),size,size);
+        graphics.fillRect(squareArea.getX(), squareArea.getY(),size,size);
+//        graphics.fillOval(squareArea.getX(), squareArea.getY(),size,size);
     }
 
     public void showGameOverMessage() {
