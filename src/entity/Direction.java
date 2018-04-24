@@ -23,7 +23,9 @@ public enum Direction {
 
     //蛇不能往后走，所以，上下不兼容，左右不兼容，用方向编码进行计算
     public boolean compatibleWith(Direction newDirection) {
-        return this.directionCode == newDirection.directionCode
-                || (this.directionCode + newDirection.directionCode) % 2 == 1;
+        return Math.abs(directionCode() - newDirection.directionCode()) != 2;
+//        方法二：
+//        return this.directionCode == newDirection.directionCode
+//                || (this.directionCode + newDirection.directionCode) % 2 == 1;
     }
 }
