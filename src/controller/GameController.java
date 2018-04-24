@@ -4,8 +4,8 @@ import config.Settings;
 import entity.Direction;
 import entity.Grid;
 import view.GameView;
-
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 /**
  * @author Created by Darling
@@ -23,7 +23,7 @@ public class GameController implements Runnable, KeyListener {
         this.running = running;
     }
 
-    public GameController(Grid grid, GameView gameView) {
+    private GameController(Grid grid, GameView gameView) {
         this.grid = grid;
         this.gameView = gameView;
     }
@@ -64,7 +64,7 @@ public class GameController implements Runnable, KeyListener {
             try {
                 Thread.sleep(Settings.DEFAULT_MOVE_INTERVAL);
             } catch (InterruptedException e) {
-                break;
+                continue;
             }
             // 进入游戏下一步
             boolean isContinue = this.grid.nextRound();
@@ -78,5 +78,5 @@ public class GameController implements Runnable, KeyListener {
             }
         }
     }
-    
+
 }
