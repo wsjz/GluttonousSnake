@@ -9,3 +9,4 @@
 蛇怎么吃食物？(初次实现用方法二)<br>
 方法一:蛇头与食物相邻，把食物所在结点添加到蛇身<br>
 方法二:蛇移动到食物所在位置，就把移动时删除的尾部再添加回来<br>
+![](https://github.com/wsjz/GluttonousSnake/blob/master/example.png)
