@@ -33,7 +33,6 @@ public class GameView {
         };
 
     }
-
     public JPanel getCanvas() {
         return canvas;
     }
@@ -42,32 +41,38 @@ public class GameView {
         canvas.repaint();
     }
 
-    public void drawSnake(Graphics graphics, Snake snake) {
-
+    private void drawSnake(Graphics graphics, Snake snake) {
+     for(int i = 0; i < snake.getBody().toArray().length - 1; i++){
+         drawSquare(graphics, snake.getBody().get(i), new Color(255, 255, 255));
+     }
     }
 
-    public void drawFood(Graphics graphics, Node squreArea) {
-
+    private void drawFood(Graphics graphics, Node squareArea) {
+        drawCycle(graphics,squareArea,new Color(0,255,0));
     }
 
-    public void drawGridBackground(Graphics graphics) {
-
+    private void drawGridBackground(Graphics graphics) {
+        graphics.setColor(new Color(255,0,0));
+        for(int i = 0; i < Settings.DEFAULT_GRID_WIDTH; i++){
+            for(int j = 0; j < Settings.DEFAULT_GRID_HEIGHT; j++){
+                graphics.fillRect(i,j,Settings.DEFAULT_NODE_SIZE,Settings.DEFAULT_NODE_SIZE);
+            }
+        }
     }
 
     private void drawSquare(Graphics graphics, Node squareArea, Color color) {
         graphics.setColor(color);
         int size = Settings.DEFAULT_NODE_SIZE;
-        graphics.fillRect(squareArea.getX() * size, squareArea.getY() * size,size,size);
+        graphics.fillRect(squareArea.getX(), squareArea.getY(),size,size);
     }
 
     private void drawCycle(Graphics graphics, Node squareArea, Color color) {
         graphics.setColor(color);
         int size = Settings.DEFAULT_NODE_SIZE;
-        graphics.fillOval(squareArea.getX() * size, squareArea.getY() * size,size,size);
+        graphics.fillOval(squareArea.getX(), squareArea.getY(),size,size);
     }
 
     public void showGameOverMessage() {
         JOptionPane.showMessageDialog(null, "游戏结束","游戏结束",JOptionPane.INFORMATION_MESSAGE);
     }
-
 }
